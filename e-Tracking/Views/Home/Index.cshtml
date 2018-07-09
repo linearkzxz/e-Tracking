@@ -1,0 +1,407 @@
+﻿@model IEnumerable<e_Tracking.Models.CommentModel>
+
+@{
+    ViewBag.Title = "Dashboard";
+    ViewBag.Description = "Mockup ver.";
+}
+
+<style>
+    .reply-btn {
+        color: #3c8dbc !important;
+        cursor: pointer; 
+    }
+    .reply-item {
+        margin-top: 15px;
+    }
+
+</style>
+
+@*<script>
+        $(function () {
+            $('#exampleModalLong').on('shown.bs.modal', function () {
+                $('#myInput').trigger('focus')
+            })
+        });
+    </script>*@
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="z-index:1072">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">More Detail</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <strong>PR Number #</strong>
+                <p></p>
+                <strong>PR Date</strong>
+                <p></p>
+                <strong>User Name</strong>
+                <p></p>
+                <strong>Vendor Name</strong>
+                <p></p>
+                <strong>Address</strong>
+                <p></p>
+                <strong>Description of Goods</strong>
+                <p></p>
+                <strong>Quantity</strong>
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="box box-success">
+    <div class="box-header with-border">
+        <h3 class="box-title">Please specific PO Number or PR Number for status tracking</h3>
+
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+        </div>
+    </div>
+    <div class="box-body">
+        <form class="form-inline">
+            <div class="form-group mb-2">
+                <label for="txtPONo">PO Number</label>
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="text" class="form-control" id="txtPONo" placeholder="PO number">
+            </div>
+            <div class="form-group mb-2">
+                <label for="txtPRNo">PR Number</label>
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="text" class="form-control" id="txtPRNo" placeholder="PR number">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Search</button>
+        </form>
+    </div>
+</div>
+<div class="no-print">
+    <div class="callout callout-warning" style="margin-bottom: 0!important;">
+        PR Number : 1100069792
+        <div class="box-tools pull-right">
+            <button type="submit" class="btn btn-primary mb-2 shadow-lg">Follow <img src="~/Content/img/baseline_library_add_white_18dp.png" width="20px" /></button>
+        </div>
+    </div>
+</div>
+@*<div class="box box-warning">
+        <div class="box-body">
+            <form class="form-inline">
+                <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Shipment #</label>
+                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                    <option selected>Choose...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </form>
+        </div>
+    </div>*@
+<div class="row">
+    <div class="box box-solid">
+        <ul class="progress-tracker progress-tracker--text progress-tracker--center">
+            <li class="progress-step is-complete">
+                <a href="#/">
+                    <span class="progress-marker">
+                        <i class="fa fa-fw fa-sticky-note fa-3x"></i>
+                    </span>
+                </a>
+                <span class="progress-text">
+                    <h5 class="progress-title">Notice</h5><br />
+                </span>
+                <b>PR Number #</b>
+                <br />
+                <a href="#" class="small-box-footer" data-toggle="modal" data-target="#exampleModalLong">
+                    <i class="fa fa-search-plus"></i> 1100069792
+                </a>
+            </li>
+
+            <li class="progress-step is-complete">
+                <a href="#/">
+                    <span class="progress-marker">
+                        <img src="~/Content/img/Dashboard/PO.png" />
+                    </span>
+                </a>
+                <span class="progress-text">
+                    <h5 class="progress-title">PO Received</h5><br />
+                </span>
+                <b>PO Number #</b>
+                <br />
+                <a href="#" class="small-box-footer" data-toggle="modal" data-target="#exampleModalLong">
+                    <i class="fa fa-search-plus"></i> 3100097351
+                </a>
+                <br />
+                <a href="#" class="small-box-footer" data-toggle="modal" data-target="#exampleModalLong">
+                    <i class="fa fa-search-plus"></i> 3100097352
+                </a>
+            </li>
+
+            <li class="progress-step is-active">
+                <a href="#/">
+                    <span class="progress-marker">
+                        <img src="~/Content/img/Dashboard/Shipping.png" />
+                    </span>
+                </a>
+                <span class="progress-text">
+                    <h5 class="progress-title">Shipping Received</h5>
+                </span>
+                <b>CS No #</b>
+                <br />
+                <a href="#" class="small-box-footer" data-toggle="modal" data-target="#exampleModalLong">
+                    <i class="fa fa-search-plus"></i> CS0000000255
+                </a>
+                <a href="#" class="small-box-footer" data-toggle="modal" data-target="#exampleModalLong">
+                    <i class="fa fa-search-plus"></i> CS0000000256
+                </a>
+                <a href="#" class="small-box-footer" data-toggle="modal" data-target="#exampleModalLong">
+                    <i class="fa fa-search-plus"></i> CS0000000257
+                </a>
+                <a href="#" class="small-box-footer" data-toggle="modal" data-target="#exampleModalLong">
+                    <i class="fa fa-search-plus"></i> CS0000000258
+                </a>
+            </li>
+
+            <li class="progress-step">
+                <a href="#/">
+                    <span class="progress-marker">
+                        <img src="~/Content/img/Dashboard/customs_formal.png" />
+                    </span>
+                </a>
+                <span class="progress-text">
+                    <h5 class="progress-title">Customs Formality</h5>
+                </span>
+            </li>
+
+            <li class="progress-step">
+                <a href="#/">
+                    <span class="progress-marker">
+                        <img src="~/Content/img/Dashboard/tax_payment.png" />
+                    </span>
+                </a>
+                <span class="progress-text">
+                    <h5 class="progress-title">Tax Payment</h5>
+                </span>
+            </li>
+
+            <li class="progress-step">
+                <a href="#/">
+                    <span class="progress-marker">
+                        <img src="~/Content/img/Dashboard/clearance.png" />
+                    </span>
+                </a>
+                <span class="progress-text">
+                    <h5 class="progress-title">Customs Clearance</h5>
+                </span>
+            </li>
+
+            <li class="progress-step">
+                <a href="#/">
+                    <span class="progress-marker">
+                        <img src="~/Content/img/Dashboard/delivery.png" />
+                    </span>
+                </a>
+                <span class="progress-text">
+                    <h5 class="progress-title">Deliver To Plant</h5>
+                </span>
+            </li>
+
+            <li class="progress-step">
+                <a href="#/">
+                    <span class="progress-marker">
+                        <img src="~/Content/img/Dashboard/payment.png" />
+                    </span>
+                </a>
+                <span class="progress-text">
+                    <h5 class="progress-title">Invoice & Payment</h5>
+                </span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">Tracking Detail</h3>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+        </div>
+        @*<div class="box-tools">
+            <div class="input-group input-group-sm" style="width: 150px;">
+                <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+        </div>*@
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body table-responsive no-padding">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Department</th>
+                    <th>Status</th>
+                    <th>Detail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>11-Jun-2018</td>
+                    <td>11:20</td>
+                    <td>จัดซื้อ</td>
+                    <td><span class="label label-success">PR Released</span></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>12-Jun-2018</td>
+                    <td>17:32</td>
+                    <td>GAI</td>
+                    <td><span class="label label-success">Shipping Doc. Received</span></td>
+                    <td>CS999999. ETD. 15-Jun-2018, ETD. 14-Jul-2018</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- /.box-body -->
+</div>
+
+<div class="box box-success">
+    <div class="box-header ui-sortable-handle">
+        <i class="fa fa-comments-o"></i>
+
+        <h3 class="box-title">Comment(s)</h3>
+
+        @*<div class="box-tools pull-right" data-toggle="tooltip" title="" data-original-title="Status">
+                <div class="btn-group" data-toggle="btn-toggle">
+                    <button type="button" class="btn btn-default btn-sm active">
+                        <i class="fa fa-square text-green"></i>
+                    </button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-square text-red"></i></button>
+                </div>
+            </div>*@
+    </div>
+    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 250px;">
+        <div class="box-body chat" id="chat-box" style="overflow: auto; width: auto; height: 250px;">
+
+            @foreach (var item in Model)
+            {
+                <div class="item">
+                    <img src="~/Content/img/user2-160x160.jpg" alt="user image" class="online" />
+                    <div class="message">
+                        <a href="#" class="name">
+                            <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> @item.UpdateDate</small>
+                            User 1
+                        </a>
+                        @item.Text
+
+                        <br />
+                        <a id="replyBtn_@item.Id" onclick="openReply(@item.Id)" class="name small reply-btn">Reply</a>
+                        
+                        @if (item.replyComments != null)
+                        {
+                            foreach (var replyItem in item.replyComments)
+                            {
+                                <div class="item reply-item">
+                                    <img src="~/Content/img/user2.jpg" alt="user image" class="online" />
+                                    <div class="message">
+                                        <a href="#" class="name">
+                                            <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> @replyItem.UpdateDate</small>
+                                            User 2
+                                        </a>
+                                        @replyItem.Text
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+
+                    <div class="attachment" id="attachment_@item.Id" style="display: none">
+                        <h4>Reply:</h4>
+
+                        <p class="filename">
+                            Reply for comment 1
+                        </p>
+
+                        <div class="input-group">
+                            <input id="inputReply_@item.Id" class="form-control" placeholder="Type message...">
+
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-success" onclick="postReply(@item.Id, @item.PrNumber)">
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            }
+        </div><div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 184.911px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
+    </div>
+    <!-- /.chat -->
+    <div class="box-footer">
+        <div class="input-group">
+            <input id="inputComment" class="form-control" placeholder="Type message...">
+
+            <div class="input-group-btn">
+                <button type="button" class="btn btn-success"  onclick="postComment('1100069792')">
+                    <i class="fa fa-plus"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function openReply(index) {
+        if($("#attachment_"+index).css("display") === 'none') {
+            $("#attachment_"+index).css("display", "block");
+        } else {
+            $("#attachment_"+index).css("display", "none");
+        }
+    }
+
+    function postReply(Id, PrNumber) {
+        var text = $("#inputReply_"+Id).val();
+        var replyObj = {
+            Text: text,
+            ParentId: Id,
+            PrNumber: PrNumber
+        }
+        postCommentReply(replyObj);
+    }
+
+    function postComment(PrNumber) {
+        var text = $("#inputComment").val();
+        var CommentObj = {
+            Text: text,
+            PrNumber: PrNumber
+        }
+        postCommentReply(CommentObj);
+    }
+
+    function postCommentReply(dataObject) {
+        $.ajax({
+            type: 'POST',
+            url: '/Home/AddComment',
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(dataObject),
+            success: function (result) {
+                location.reload();
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert("ไม่สามารถโพสต์ได้");
+            },
+        });
+    }
+</script>

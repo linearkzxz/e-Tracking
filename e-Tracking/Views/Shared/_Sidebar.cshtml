@@ -1,0 +1,28 @@
+﻿@using WebHelpers.Mvc5
+<aside class="main-sidebar">
+    <section class="sidebar">
+        @* BEGIN Search *@
+        @*<form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form>*@
+        @* END Search *@
+        @* BEGIN Menu *@
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">Menu</li>
+            <li class="@Url.IsLinkActive("Index", "Home")">
+                <a href="@Url.Action("Index", "Home")"><i class="fa fa-desktop"></i> <span>Dashbaoard</span></a>
+            </li>
+            <li class="@Url.IsLinkActive("AnotherLink", "Home")">
+                <a href="@Url.Action("AnotherLink", "Home")"><i class="fa fa-calculator"></i> <span>Plan Cost Calculator</span></a>
+            </li>
+        </ul>
+        @* END Menu *@
+    </section>
+</aside>
